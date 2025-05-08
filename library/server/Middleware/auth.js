@@ -13,12 +13,16 @@ const authenticate=(req,res,next)=>{
         const [name,token]=cooki.trim().split('=');
         console.log(name);
         console.log(token);
-        if(name=='Token'){
+        if(name=='AuthToken'){
            const verified= jwt.verify(token,process.env.SECRET_KEY);
            console.log(verified);
            //after verification these varified data have to used in another function so using req  stored in another names
+         
            req.UserName=verified.UserName;
-           req.role=verified.UserRole;
+           req.UserRole=verified.UserRole;
+           console.log(req.UserName);
+           console.log(req.UserRole);
+
            count=1;
            next ();
            break;

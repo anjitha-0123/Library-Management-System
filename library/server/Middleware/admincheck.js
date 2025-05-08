@@ -1,5 +1,5 @@
 const admincheck=(req,res,next)=>{
-    if(req.role=='Admin'){
+    if(req.UserRole=='admin'){
         next();
     }
     else
